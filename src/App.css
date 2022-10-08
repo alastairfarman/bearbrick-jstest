@@ -1,0 +1,279 @@
+@font-face {
+  font-family: "Betatron-Regular";
+  src: url("../public/fonts/Betatron-Regular.woff2") format("woff2"),
+    url("../public/fonts/Betatron-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap");
+
+* {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  font-family: "Inter Tight";
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+.bk {
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.wh {
+  position: relative;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+}
+
+.bk h1{
+  align-self: center;
+  color: white;
+}
+
+section {
+  scroll-snap-align: center;
+}
+
+.wh > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bb-headline {
+  position: relative;
+  font-size: 2vw;
+  width: 600px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#bearbrick {
+  background-image: linear-gradient(
+    to top,
+    #e6e6e6,
+    #f4f4f4
+  );
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+}
+
+.active::before{
+  content: "OK";
+  position:absolute;
+  top:0;
+  width:27px;
+  height:100%;
+  z-index: 40;
+}
+
+.empty {
+  width: 40vw;
+}
+
+#filter{
+  background-color: white;
+  position:absolute;
+  top: 100vh;
+  opacity: 0.4;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+}
+
+.brand-container {
+  translate: 0 -55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vw;
+  width: 30vw;
+  margin: 2rem;
+  background-color: rgba(0, 160, 252, 0.8);
+  backdrop-filter: blur(25px);
+  z-index: 25;
+  gap: 2vw;
+  border-radius: 50%;
+  transition: background-color 0.5s ease-in-out;
+  animation: beat 2s ease-in-out 0s infinite alternate;
+}
+
+@keyframes beat {
+  to {
+    height: 38vw;
+    width: 38vw;
+  }
+}
+
+.brand-container:hover {
+  transition: all 0.3s;
+}
+
+.brand-container img {
+  height: 7vw;
+}
+
+.brands {
+  display: flex;
+  gap: 2vw;
+}
+
+#big-bear {
+  position: absolute;
+  translate: -40%;
+  object-fit: contain;
+  z-index: 5;
+}
+
+#bear-move1 {
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  rotate: -35deg;
+  height: 200px;
+  width: auto;
+  filter: blur(10px);
+  opacity: 1;
+  z-index: 2;
+  animation: bear-move1 8s linear 0s infinite, rotation 40s linear 0s infinite;
+}
+
+#bear-move2 {
+  position: absolute;
+  top: 100%;
+  right: -10%;
+  rotate: 35deg;
+  height: 500px;
+  width: auto;
+  filter: blur(4px);
+  opacity: 1;
+  animation: bear-move2 10s linear 0s infinite, rotation 20s linear 0s infinite;
+  z-index: 3;
+}
+
+#bear-move3 {
+  position: absolute;
+  top: 100%;
+  right: -10%;
+  rotate: 35deg;
+  height: 80px;
+  width: auto;
+  filter: blur(12px);
+  opacity: 1;
+  animation: bear-move3 6s linear infinite, rotation 2s linear 0s infinite;
+  z-index: 1;
+}
+
+@keyframes rotation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes bear-move1 {
+  from {
+    top: 100%;
+    right: -10%;
+  }
+  to {
+    top: -20%;
+    right: 50%;
+  }
+}
+
+@keyframes bear-move2 {
+  from {
+    top: 100%;
+    right: 60%;
+  }
+  to {
+    top: -50%;
+    right: 10%;
+  }
+}
+
+@keyframes bear-move3 {
+  0% {
+    top: -30%;
+    left: -20%;
+  }
+  33.333% {
+    top: 130%;
+    left: 120%;
+  }
+  100% {
+    top: 130%;
+    left: 120%;
+  }
+}
+
+.small-bear {
+  z-index: 200;
+  height: calc(100px * var(--scale));
+  padding: 0 3rem 0 3rem;
+  cursor: pointer;
+}
+
+#bb-hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  margin: 0rem;
+  display: flex;
+  height: 110px;
+  width: inherit;
+  justify-self: center;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 150;
+  --scale: 1;
+  padding: 1rem;
+}
+
+.returntodock{
+  transition: all 1s;
+}
+
+@media only screen and (max-width: 850px) {
+  #bb-hover {
+    height: 80px;
+    transition: height 1s;
+  }
+
+  .wh img.small-bear {
+    height: calc(65px * var(--scale));
+    padding: 0 1rem 0 1rem;
+    justify-self: end;
+  }
+
+}
